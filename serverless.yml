@@ -1,0 +1,32 @@
+service: devnautas-code-snippets
+frameworkVersion: '3'
+
+functions:
+  createSnippetHandler:
+    handler: index.createSnippetHandler
+    events:
+      - httpApi:
+          path: /snippet
+          method: post
+  getSnippetHandler:
+    handler: index.getSnippetHandler
+    events:
+      - httpApi:
+          path: /snippet
+          method: get
+
+package:
+  exclude:
+    - .DS_Store
+    - .env
+    - .gitignore
+    - package-lock.json
+    - README.md
+    - coverage/**
+    - .git/**
+    - test/**
+    - .vscode/**
+
+provider:
+  name: aws
+  runtime: nodejs18.x
